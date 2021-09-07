@@ -24,5 +24,16 @@ namespace Contracted.Repositories
       ";
       return _db.Query<Contractor>(sql).ToList();
     }
+
+    internal Contractor GetById(int id)
+    {
+      string sql = @"
+      SELECT 
+        c.*
+      FROM contractor c
+      WHERE c.id = @id
+      ";
+      return _db.QueryFirstOrDefault<Contractor>(sql, new { id });
+    }
   }
 }

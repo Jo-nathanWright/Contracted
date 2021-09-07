@@ -27,9 +27,20 @@ namespace Contracted.Controllers
         }
         catch (Exception err)
         {
-            throw new Exception(err.Message);
+            return BadRequest(err.Message);
         }
     }
-    // [HttpGet("{id}")]
+    [HttpGet("{id}")]
+    public ActionResult<Contractor> Get(int id){
+        try
+        {
+        Contractor contractor = _cs.Get(id);
+        return Ok(contractor);
+      }
+        catch (Exception err)
+        {
+        return BadRequest(err.Message);
+      }
+    }
   }
 }

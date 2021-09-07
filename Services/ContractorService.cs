@@ -17,7 +17,17 @@ namespace Contracted.Services
     internal List<Contractor> Get()
     {
       List<Contractor> contractors = _repo.GetAll();
-      return contractors;
+      return contractors; 
+    }
+
+    internal Contractor Get(int id)
+    {
+      Contractor contractor = _repo.GetById(id);
+      if(contractor == null)
+      {
+        throw new Exception("Invalid Id");
+      }
+      return contractor;
     }
   }
 }
