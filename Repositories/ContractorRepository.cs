@@ -54,5 +54,17 @@ namespace Contracted.Repositories
       string sql = "DELETE FROM contractor WHERE id = @id LIMIT 1;";
       _db.Execute(sql, new { id });
     }
+
+    internal Contractor Update(Contractor editedContractor)
+    {
+      string sql = @"
+      UPDATE contractor
+      SET
+        name = @Name
+      WHERE id = @id;
+      ";
+      _db.Execute(sql, editedContractor);
+      return editedContractor;
+    }
   }
 }

@@ -58,6 +58,21 @@ namespace Contracted.Controllers
       }
     }
   
+    [HttpPut("{id}")]
+    public ActionResult<Contractor> Update(int id, [FromBody] Contractor editedContractor)
+    {
+        try
+        {
+        editedContractor.Id = id;
+        Contractor contractor = _cs.Update(editedContractor);
+        return Ok(contractor);
+      }
+        catch (Exception err)
+        {
+        return BadRequest(err.Message);
+      }
+    }
+
     [HttpDelete("{id}")]
     public ActionResult<String> Delete(int id)
     {

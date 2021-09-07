@@ -40,5 +40,12 @@ namespace Contracted.Services
         Get(id);
         _repo.Delete(id);
     }
+
+    internal Contractor Update(Contractor editedContractor)
+    {
+      Contractor original =  Get(editedContractor.Id);
+      editedContractor.Name = editedContractor.Name != null ? editedContractor.Name : original.Name;
+      return _repo.Update(editedContractor);
+    }
   }
 }
