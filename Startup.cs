@@ -47,6 +47,10 @@ namespace Contracted
             services.AddTransient<ContractorRepository>();
             services.AddTransient<CompanyRepository>();
             services.AddTransient<CompanyService>();
+            services.AddTransient<JobRepository>();
+            services.AddTransient<JobService>();
+
+
         }
 
         private void ConfigureCors(IServiceCollection services)
