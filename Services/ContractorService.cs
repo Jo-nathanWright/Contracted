@@ -29,5 +29,10 @@ namespace Contracted.Services
       }
       return contractor;
     }
+
+    internal Contractor Create(Contractor newContractor)
+    {
+      return _repo.Create(newContractor);
+    }
   }
 }

@@ -35,5 +35,18 @@ namespace Contracted.Repositories
       ";
       return _db.QueryFirstOrDefault<Contractor>(sql, new { id });
     }
+
+    internal Contractor Create(Contractor newContractor)
+    {
+      string sql = @"
+      INSERT INTO contractor
+      (name)
+      VALUES
+      (@Name);
+      SELECT LAST_INSERT_ID();
+      ";
+      newContractor.Id = _db.ExecuteScalar<int>(sql, newContractor);
+      return newContractor;
+    }
   }
 }
