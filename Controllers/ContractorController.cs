@@ -57,5 +57,19 @@ namespace Contracted.Controllers
         return BadRequest(err.Message);
       }
     }
+  
+    [HttpDelete("{id}")]
+    public ActionResult<String> Delete(int id)
+    {
+        try
+        {
+        _cs.Delete(id);
+        return Ok("Successfully Deleted");
+      }
+        catch (Exception err)
+        {
+        return BadRequest(err.Message);
+      }
+    }
   }
 }

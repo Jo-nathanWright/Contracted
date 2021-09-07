@@ -34,5 +34,11 @@ namespace Contracted.Services
     {
       return _repo.Create(newContractor);
     }
+
+    internal void Delete(int id)
+    {
+        Get(id);
+        _repo.Delete(id);
+    }
   }
 }

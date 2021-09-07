@@ -48,5 +48,11 @@ namespace Contracted.Repositories
       newContractor.Id = _db.ExecuteScalar<int>(sql, newContractor);
       return newContractor;
     }
+
+    internal void Delete(int id)
+    {
+      string sql = "DELETE FROM contractor WHERE id = @id LIMIT 1;";
+      _db.Execute(sql, new { id });
+    }
   }
 }
